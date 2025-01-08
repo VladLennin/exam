@@ -1,9 +1,8 @@
-
-export function isNumber (x) {
+function isNumber(x) {
   return typeof x === 'number'
 }
 
-export function isBigNumber (x) {
+function isBigNumber(x) {
   if (
     !x || typeof x !== 'object' ||
     typeof x.constructor !== 'function'
@@ -29,25 +28,25 @@ export function isBigNumber (x) {
   return false
 }
 
-export function isComplex (x) {
+function isComplex(x) {
   return (x && typeof x === 'object' && Object.getPrototypeOf(x).isComplex === true) || false
 }
 
-export function isFraction (x) {
+function isFraction(x) {
   return (x && typeof x === 'object' && Object.getPrototypeOf(x).isFraction === true) || false
 }
 
-export function isUnit (x) {
+function isUnit(x) {
   return (x && x.constructor.prototype.isUnit === true) || false
 }
 
-export function isString (x) {
+function isString(x) {
   return typeof x === 'string'
 }
 
-export const isArray = Array.isArray
+const isArray = Array.isArray
 
-export function isMatrix (x) {
+function isMatrix(x) {
   return (x && x.constructor.prototype.isMatrix === true) || false
 }
 
@@ -56,14 +55,18 @@ export function isMatrix (x) {
  * @param {*} x
  * @returns {boolean} isCollection
  */
-export function isCollection (x) {
+function isCollection(x) {
   return Array.isArray(x) || isMatrix(x)
 }
 
-export function isDenseMatrix (x) {
+function isDenseMatrix(x) {
   return (x && x.isDenseMatrix && x.constructor.prototype.isMatrix === true) || false
 }
 
-export function isSparseMatrix (x) {
+function isSparseMatrix(x) {
   return (x && x.isSparseMatrix && x.constructor.prototype.isMatrix === true) || false
+}
+
+module.exports = {
+  isArray, isComplex, isNumber, isBigNumber, isFraction, isUnit, isString, isCollection, isDenseMatrix, isSparseMatrix,isMatrix
 }
